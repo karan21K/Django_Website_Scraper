@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"
+      rel="stylesheet">
+        <title>Document</title>
+    </head>
+    <body>
+        <div class="container"></br>
+            <div class="row">
+                <div class="col-md-12 m-5">
+                    <h1>Link Collector</h1>
+                </div>
+            </div>
+            <div class="row m-5">
+                <div class="col-md-4">
+                    <form method="POST" actions="/">
+                        {% csrf_token %}
+                        <input class="form-control" name="site" type="text" id="site" placeholder="enter the site address">
+                     </div>
+                     <div class="col-md-1">
+                        <button class="btn btn-primary" type="sumbit">Scrape</button>
+                     </div>
+                    </form>
+                    <div class="col-md-5">
+                        <a class="btn btn-warning" href="/delete">Delete</a>
+                    </div>
+            </div>   
+
+            <div class="row">
+                <div class="col-md-8">
+
+                    <table class="table">
+                        <thead class="thead-dark">
+                          <tr>
+                            <th scope="col">ID</th>
+                            <th scope="col">Name</th>
+                            <th scope="col">Link</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                        {% for link in data %}
+                          <tr>
+                            <th>{{link.id}}</th>
+                            <td>{{link.name}}</td>
+                            <td>{{link.address}}</td>
+                            
+                          </tr>
+                        {% endfor %}
+                      </table>
+                </div>
+            </div>
+        </div>        
+
+        
+    </body>
+</html>
